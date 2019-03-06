@@ -17,6 +17,24 @@ class Article {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.domElement.classList.toggle("article-open");
   }
+
+    static addArticle(obj) {
+        const h2 = document.createElement("h2");
+        h2.innerText = obj.heading;
+        const date = document.createElement("p");
+        date.classList.add("date");
+        date.innerText = obj.date;
+        const p = document.createElement("p");
+        p.innerText = obj.paragraph;
+        const span = document.createElement("span");
+        span.classList.add("expandButton");
+        const div = document.createElement("div");
+        div.classList.add("article");
+        div.appendChild(h2);
+        div.appendChild(p);
+        div.appendChild(span);
+        return div;
+    }
 }
 
 /* START HERE: 
@@ -27,7 +45,12 @@ class Article {
 
 */
 
+const newObj = {heading: "Our new heading", paragraph: "Our new paragraph"};
+const articleContainer = document.querySelector(".articles");
+articleContainer.appendChild(Article.addArticle(newObj));
+
 const articles = document.querySelectorAll(".article");
 articles.forEach(function(article) {
     return new Article(article)
 });
+
