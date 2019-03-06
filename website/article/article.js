@@ -30,9 +30,7 @@ class Article {
         span.classList.add("expandButton");
         const div = document.createElement("div");
         div.classList.add("article");
-        div.appendChild(h2);
-        div.appendChild(p);
-        div.appendChild(span);
+        div.append(h2, date, p, span);
         return div;
     }
 }
@@ -45,7 +43,7 @@ class Article {
 
 */
 
-const newObj = {heading: "Our new heading", paragraph: "Our new paragraph"};
+const newObj = {heading: "Our new heading", date: "March 6th 2019", paragraph: "Our new paragraph"};
 const articleContainer = document.querySelector(".articles");
 articleContainer.appendChild(Article.addArticle(newObj));
 
